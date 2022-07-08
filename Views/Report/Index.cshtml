@@ -1,0 +1,161 @@
+﻿@model RingCentralReport.Models.ReportModels
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Report</h1>
+
+@*<p style="text-align:right;margin-right:20px;">
+    <a class="btn btn-outline-primary" asp-action="AddOrEdit">Create New</a>
+</p>*@
+<div class="form-group">
+     <form method="get" asp-controller="Report" asp-action="Index">
+       @* <input type="submit" value="Search" />*@
+   
+   
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="first">From Date</label>
+          <input  id="datepicker" type="text" name="fromdate" class="form-control" value="@Model.fromDate" />
+        </div>
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="last">To Date</label>
+          <input  id="datepicker1" type="text" name="todate" class="form-control" value="@Model.toDate" />
+        </div>
+      </div>
+      <!--  col-md-6   -->
+
+        <div class="col-md-4" style="margin-top:30px;">
+        <div class="form-group">
+           <label for="dsds"></label>
+         <button type="submit" class="btn btn-primary" style="float:left;">Get Report</button>
+        </div>
+      </div>
+    </div>
+
+
+    
+    
+
+
+</form>
+</div>
+<div>
+   
+    <table class="table-striped table-bordered flex-lg-nowrap datatale table-responsive" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    created_at
+                </th>
+                <th>
+                   Id
+                </th>
+                <th>
+                   FirstName
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                   Email
+                </th>
+                <th>
+                    ChatLabel
+                </th>
+                <th>
+                    identity_group_id
+                </th>
+                <th>
+                    foreign_id
+                </th>
+                <th>source_name</th>
+                <th>first_content_author_id</th>
+                <th>interventions_count</th>
+                <th>intervention_user_ids</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listReportmodel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TranscriptId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Body)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.identity_group_id)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.foreign_id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.source)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.First_Content_Author_ID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Interventions_Count)</td>
+                    <td>@Html.DisplayFor(modelItem => item.intervention_user_ids)</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+   @* <div>
+        <a href="@Url.Action("Export","Student")">Download Excel</a>
+    </div>
+    <form method="post" asp-controller="Report" asp-action="Export">
+        <input type="submit" value="Export" />
+    </form>*@
+
+  
+</div>
+@section Scripts{
+   
+  <script>
+    $(document).ready( function (e) {
+        $('#myTable').DataTable({
+            "responsive":true,
+            "processing": true,    
+             // "serverSide": true, 
+            dom: 'Bfrtip',
+            "sPaginationType":"full_numbers",
+           buttons: [
+            { extend: 'excel', text: 'Export' }
+        ],
+         scrollX: true,
+         scrollY: true,
+    
+        });
+} );
+
+ $(function () {
+     $("#datepicker").datepicker({ 
+            dateFormat: 'dd/mm/yy' 
+        });
+            $("#datepicker1").datepicker({ 
+            dateFormat: 'dd/mm/yy' 
+        });
+        });
+</script>
+}
