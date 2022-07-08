@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BaV4Ww5KEqUbyFOAFt9sAZicVUCzqDadMJu0CI1pPFLH1DA7gUk4yp8GKhxE5bHG68i9n0l0GXWIL+4G3vV0NA==",
+  "dgSpecHash": "LwKi5y6tu5KKxZ3x4VN5QkvoMVGISBaFzvdOJpiLugh93FonysYuXkCDGqXAwQvXmG9Ui2/wG9QKbM1Q0VG1iQ==",
   "success": true,
-  "projectFilePath": "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\RingCentralReport.csproj",
+  "projectFilePath": "C:\\Workspace\\RingCentralReport\\RingCentralReport.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AMBRESH\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\AMBRESH\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

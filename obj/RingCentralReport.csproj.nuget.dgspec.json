@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\RingCentralReport.csproj": {}
+    "C:\\Workspace\\RingCentralReport\\RingCentralReport.csproj": {}
   },
   "projects": {
-    "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\RingCentralReport.csproj": {
+    "C:\\Workspace\\RingCentralReport\\RingCentralReport.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\RingCentralReport.csproj",
+        "projectUniqueName": "C:\\Workspace\\RingCentralReport\\RingCentralReport.csproj",
         "projectName": "RingCentralReport",
-        "projectPath": "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\RingCentralReport.csproj",
+        "projectPath": "C:\\Workspace\\RingCentralReport\\RingCentralReport.csproj",
         "packagesPath": "C:\\Users\\AMBRESH\\.nuget\\packages\\",
-        "outputPath": "C:\\RingCentral\\RingCentraol_ReportPortal_Assets\\RingCentraol_ReportPortal_Assets\\RingCentralReport_FrontEnd\\RingCentralReport\\obj\\",
+        "outputPath": "C:\\Workspace\\RingCentralReport\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AMBRESH\\AppData\\Roaming\\NuGet\\NuGet.Config",
