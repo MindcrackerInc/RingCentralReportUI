@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using RingCentralReport.Models;
 namespace RingCentralReport.Controllers
 {
+    
     public class LoginController : Controller
     {
         private readonly RignCentral_ReportingContext _context;
@@ -30,6 +32,7 @@ namespace RingCentralReport.Controllers
             return View(await _context.UserInfos.ToListAsync());
         }
 
+        [Authorize]
         // GET: Login/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -49,6 +52,7 @@ namespace RingCentralReport.Controllers
         }
 
         // GET: Login/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -126,7 +130,7 @@ namespace RingCentralReport.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,DisplayName,UserName,Email,Password,CreatedDate")] UserInfo userInfo)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,DisplayName,UserName,Email,Password")] UserInfo userInfo)
         {
             if (id != userInfo.UserId)
             {
@@ -137,6 +141,7 @@ namespace RingCentralReport.Controllers
             {
                 try
                 {
+                    userInfo.CreatedDate = DateTime.Now;
                     _context.Update(userInfo);
                     await _context.SaveChangesAsync();
                 }

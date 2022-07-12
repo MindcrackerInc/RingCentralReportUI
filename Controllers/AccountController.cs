@@ -47,7 +47,7 @@ namespace RingCentralReport.Controllers
                     ViewBag.ErrorMessage = "Email or Password is correct";
 
                     var identity = new ClaimsIdentity(new[] {
-                    new Claim(ClaimTypes.Name, userInfo.Email)
+                    new Claim(ClaimTypes.Name, result.DisplayName)
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                     var principal = new ClaimsPrincipal(identity);
