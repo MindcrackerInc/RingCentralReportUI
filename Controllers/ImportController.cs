@@ -33,10 +33,12 @@ namespace RingCentralReport.Controllers
                 _httpClient.Timeout = TimeSpan.FromMinutes(30);
                var response = await _httpClient.PostAsync(URL, null);
                 string apiResponse = await response.Content.ReadAsStringAsync();
+                ViewBag.ErrorMessage = "Successfully Synced";
             }
             catch(Exception ex)
             {
-
+                ViewBag.ErrorMessage = "There is some error found"+ex.Message;
+                return View("../Import/Index");
             }
             return View("index");
         }

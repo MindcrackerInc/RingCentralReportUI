@@ -19,18 +19,35 @@
 
     <div class="row">
       <div class="col-md-4">
+         @* <div class="form-group">
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
+            </div>*@
         <div class="form-group">
           <label for="first">From Date</label>
-          <input  id="datepicker" type="text" name="fromdate" class="form-control" value="@Model.fromDate" />
-        </div>
+                    @if (Model != null)
+                    {
+                        <input  id="datepicker" type="text" name="fromdate" class="form-control" value="@Model.fromDate" />
+                    }
+                    else
+                    {
+                        <input  id="datepicker" type="text" name="fromdate" class="form-control" value="" />
+                    }
+                </div>
       </div>
       <!--  col-md-6   -->
 
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">To Date</label>
-          <input  id="datepicker1" type="text" name="todate" class="form-control" value="@Model.toDate" />
-        </div>
+                    @if (Model != null)
+                    {
+                        <input  id="datepicker1" type="text" name="todate" class="form-control" value="@Model.toDate" />
+                    }
+                    else
+                    {
+                        <input  id="datepicker1" type="text" name="todate" class="form-control" value="" />
+                    }
+                </div>
       </div>
       <!--  col-md-6   -->
 
@@ -86,40 +103,43 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.listReportmodel)
+            @if (Model != null&& Model.listReportmodel!=null)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created_at)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TranscriptId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Body)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.identity_group_id)
-                    </td>
-                    <td>@Html.DisplayFor(modelItem => item.foreign_id)</td>
-                    <td>@Html.DisplayFor(modelItem => item.source)
-                    </td>
-                    <td>@Html.DisplayFor(modelItem => item.First_Content_Author_ID)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Interventions_Count)</td>
-                    <td>@Html.DisplayFor(modelItem => item.intervention_user_ids)</td>
+                @foreach (var item in Model.listReportmodel)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TranscriptId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.identity_group_id)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.foreign_id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.source)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.First_Content_Author_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Interventions_Count)</td>
+                        <td>@Html.DisplayFor(modelItem => item.intervention_user_ids)</td>
 
-                </tr>
-            }
-        </tbody>
+                    </tr>
+                }
+         
+            }       </tbody>
     </table>
    @* <div>
         <a href="@Url.Action("Export","Student")">Download Excel</a>
@@ -151,10 +171,10 @@
 
  $(function () {
      $("#datepicker").datepicker({ 
-            dateFormat: 'dd/mm/yy' 
+            dateFormat: 'mm/dd/yy' 
         });
             $("#datepicker1").datepicker({ 
-            dateFormat: 'dd/mm/yy' 
+            dateFormat: 'mm/dd/yy' 
         });
         });
 </script>

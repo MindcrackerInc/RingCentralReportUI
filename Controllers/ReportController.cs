@@ -34,22 +34,26 @@ namespace RingCentralReport.Controllers
         public async Task<ActionResult> IndexAsync(string fromdate="",string todate="",int offSet = 0, int limit = 30)
         {
             //var identities = //await _context.Identities.ToListAsync();
+            ReportModels reportModels = new ReportModels();
             try
             {
-                ReportModels reportModels = new ReportModels();
+                ViewBag.ErrorMessage = "object created";
                 if (string.IsNullOrEmpty(fromdate) && string.IsNullOrEmpty(todate))
                 {
-                    reportModels.fromDate = DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy");
-                    reportModels.toDate = DateTime.Now.ToString("dd/MM/yyyy");
+                    reportModels.fromDate = DateTime.Now.AddMonths(-1).ToString("MM/dd/yyyy");
+                    reportModels.toDate = DateTime.Now.ToString("MM/dd/yyyy");
                     fromdate = DateTime.Now.AddMonths(-1).ToString("yyyyMMdd");
                     todate = DateTime.Now.ToString("yyyyMMdd");
                 }
                 else {
                    reportModels.fromDate = fromdate;
                     reportModels.toDate = todate;
-                    fromdate = Convert.ToDateTime(fromdate).ToString("yyyyMMdd");
-                    todate = Convert.ToDateTime(todate).ToString("yyyyMMdd");
+                    //DateTime fdt = Convert.ToDateTime(fromdate);
+                    //DateTime tdt = Convert.ToDateTime(todate);
+                    //fromdate = Convert.ToDateTime(fdt).ToString("yyyyMMdd");
+                    //todate = Convert.ToDateTime(tdt).ToString("yyyyMMdd");
                 }
+                ViewBag.ErrorMessage = "Date transformed";
                // Int32 ajaxDraw = Convert.ToInt32(HttpContext.Request.Form["draw"]);
                 using (var connection = new SqlConnection(_connectionString))
                 {
@@ -62,17 +66,18 @@ namespace RingCentralReport.Controllers
                     reportModels.recordsFiltered = 500000;
                     reportModels.recordsTotal = 500000;
                     reportModels.draw = 1;
-
+                    ViewBag.ErrorMessage = reportModels.fromDate.ToString();
                     return View(reportModels);
                 }
             }
             catch(Exception ex)
             {
-
+                ViewBag.ErrorMessage = ex.Message;
+                return View(reportModels);
             }
                 //var values = new { Beginning_Date = "2017.1.1", Ending_Date = "2017.12.31" };
                 //var results = connection.Query(sql).ToList();
-                return View();
+                //return View(reportModels);
             
             }
        
